@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  background-image: url('/src/mona-eendra-vC8wj_Kphak-unsplash.jpg'); /* Add your image URL */
+  background-size: cover; /* Make sure the image covers the entire background */
+  background-position: center center; /* Center the image */
+  background-attachment: fixed; /* Keep the background fixed during scrolling */
+  background-repeat: no-repeat; /* Ensure the image doesn't repeat */
+  height: 100vh; /* Ensure the background covers the full viewport */
+}
