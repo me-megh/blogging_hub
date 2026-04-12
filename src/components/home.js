@@ -22,7 +22,7 @@ const Home = () => {
       <div className="container">
         {/* Hero Section */}
         <div className="text-center my-5">
-          <h1 className="display-4 font-weight-bold">Blog Posts</h1>
+          <h1 className="display-4 font-weight-bold">Blog Posts........</h1>
           <p className="lead text-muted">Welcome to our blog where we share useful tips, tutorials, and insights on web development, design, and more...</p>
         </div>
 
