@@ -50,5 +50,7 @@ urlpatterns = [
     path('api/blog-posts/<int:pk>/delete/', views.delete_blog, name='delete_blog_api'),
 ]
 
-if settings.DEBUG:
-   urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(
+    settings.MEDIA_URL,
+    document_root=settings.MEDIA_ROOT
+)
