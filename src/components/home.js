@@ -7,8 +7,12 @@ const Home = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
+    const apiUrl =
+      process.env.NODE_ENV === "production"
+        ? process.env.REACT_APP_API_BASE_URL_PROD // For production (Vercel)
+        : process.env.REACT_APP_API_BASE_URL_LOCAL; // For local development
     const fetchData = async () => {
-      const res = await fetch("http://127.0.0.1:8000/api/blog-posts/");
+      const res = await fetch(`${apiUrl}/api/blog-posts/`);
       const result = await res.json();
       setPosts(result);
     };
@@ -34,11 +38,11 @@ const Home = () => {
             <div key={post.id} className="col-md-6 col-lg-4 mb-4">
               <div className="card h-100 shadow-sm">
                 <img
-                  src={
-                    post.image
-                      ? `http://127.0.0.1:8000${post.image}`
-                      : "online-message-blog-chat-communication-envelop-graphic-icon-concept_53876-139717.avif"
-                  }
+                  src={`${
+                    process.env.NODE_ENV === "production"
+                      ? process.env.REACT_APP_API_BASE_URL_PROD
+                      : process.env.REACT_APP_API_BASE_URL_LOCAL
+                  }${post.image}`}
                   className="card-img-top"
                   alt={post.title}
                   style={{ width: "100%", height: "200px", objectFit: "cover" }}

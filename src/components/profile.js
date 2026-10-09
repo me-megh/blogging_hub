@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { Card, Button, Spinner, Row, Col, Container, Image } from "react-bootstrap";
+import {
+  Card,
+  Button,
+  Spinner,
+  Row,
+  Col,
+  Container,
+  Image,
+} from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa"; // Importing Font Awesome icon for default profile image
-import defaultImage from "../download.png"; 
+import defaultImage from "../download.png";
 const Profile = () => {
   const [profileData, setProfileData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -15,23 +23,31 @@ const Profile = () => {
   };
 
   useEffect(() => {
+    const apiUrl =
+      process.env.NODE_ENV === "production"
+        ? process.env.REACT_APP_API_BASE_URL_PROD // For production (Vercel)
+        : process.env.REACT_APP_API_BASE_URL_LOCAL; // For local development
     const csrfTokenFromCookie = getCsrfTokenFromCookie();
+    console.log('CSRF Token from cookie:', csrfTokenFromCookie);
     if (csrfTokenFromCookie) {
       const fetchProfileData = async () => {
         try {
-          const response = await fetch("http://localhost:8000/api/profile/", {
+          const response = await fetch(`${apiUrl}/api/profile/`, {
             method: "GET",
             headers: {
               "X-CSRFToken": csrfTokenFromCookie,
             },
             credentials: "include",
           });
-
+          console.log('Response Status:', response.status);
+          console.log('Response Headers:', response.headers);
           if (response.ok) {
             const data = await response.json();
             setProfileData(data);
           } else {
-            setError(`Failed to fetch profile data. Status: ${response.status}`);
+            setError(
+              `Failed to fetch profile data. Status: ${response.status}`
+            );
           }
         } catch (error) {
           setError("Error fetching profile data.");
@@ -46,19 +62,24 @@ const Profile = () => {
   const handleDelete = async (id) => {
     const csrfTokenFromCookie = getCsrfTokenFromCookie();
     const authToken = localStorage.getItem("authToken");
-
-    const response = await fetch(`http://localhost:8000/api/blog-posts/${id}/delete/`, {
+    const apiUrl =
+      process.env.NODE_ENV === "production"
+        ? process.env.REACT_APP_API_BASE_URL_PROD // For production (Vercel)
+        : process.env.REACT_APP_API_BASE_URL_LOCAL; // For local development
+    const response = await fetch(`${apiUrl}/api/blog-posts/${id}/delete/`, {
       method: "DELETE",
       headers: {
         "X-CSRFToken": csrfTokenFromCookie,
-        "Authorization": `Bearer ${authToken}`,
+        Authorization: `Bearer ${authToken}`,
       },
       credentials: "include",
     });
 
     if (response.ok) {
       alert("Blog deleted successfully!");
-      const updatedPosts = profileData.user_posts.filter(post => post.id !== id);
+      const updatedPosts = profileData.user_posts.filter(
+        (post) => post.id !== id
+      );
       setProfileData({ ...profileData, user_posts: updatedPosts });
     } else {
       alert("Error deleting blog");
@@ -112,8 +133,12 @@ const Profile = () => {
                 className="w-100 mt-4"
                 onClick={async () => {
                   try {
+                    const apiUrl =
+                      process.env.NODE_ENV === "production"
+                        ? process.env.REACT_APP_API_BASE_URL_PROD // For production (Vercel)
+                        : process.env.REACT_APP_API_BASE_URL_LOCAL; // For local development
                     const csrfTokenFromCookie = getCsrfTokenFromCookie();
-                    const response = await fetch("http://localhost:8000/blog/api/logout/", {
+                    const response = await fetch(`${apiUrl}/blog/api/logout/`, {
                       method: "POST",
                       credentials: "include",
                       headers: {
@@ -149,7 +174,12 @@ const Profile = () => {
                         {/* Use a default image if post does not have an image */}
                         <Card.Img
                           variant="top"
-                          src={post.image?post.image || "https://via.placeholder.com/400x200":defaultImage}
+                          src={
+                            post.image
+                              ? post.image ||
+                                "https://via.placeholder.com/400x200"
+                              : defaultImage
+                          }
                           alt={post.title}
                           style={{ objectFit: "cover", height: "200px" }}
                         />
@@ -157,7 +187,8 @@ const Profile = () => {
                           <Card.Title>{post.title}</Card.Title>
                           <Card.Text>
                             <small className="text-muted">
-                              Author: {post.author} | {new Date(post.created_at).toLocaleDateString()}
+                              Author: {post.author} |{" "}
+                              {new Date(post.created_at).toLocaleDateString()}
                             </small>
                           </Card.Text>
                           <Card.Text>{post.description}</Card.Text>

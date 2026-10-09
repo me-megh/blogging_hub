@@ -30,7 +30,10 @@ const CreateBlog = () => {
     if (image) formData.append("image", image);
 
     try {
-      const response = await fetch("http://localhost:8000/blog/create/", {
+      const apiUrl = process.env.NODE_ENV === 'production'
+      ? process.env.REACT_APP_API_BASE_URL_PROD  // For production (Vercel)
+      : process.env.REACT_APP_API_BASE_URL_LOCAL;  // For local development
+      const response = await fetch(`${apiUrl}/blog/create/`, {
         method: "POST",
         headers: {
           "X-CSRFToken": csrfToken,

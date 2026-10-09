@@ -15,9 +15,12 @@ const RegisterForm = () => {
 
   // Fetch CSRF token
   useEffect(() => {
+    const apiUrl = process.env.NODE_ENV === 'production'
+    ? process.env.REACT_APP_API_BASE_URL_PROD  // For production (Vercel)
+    : process.env.REACT_APP_API_BASE_URL_LOCAL;  // For local development
     const getCsrfToken = async () => {
       try {
-        const response = await fetch("http://localhost:8000/blog/csrf-token/");
+        const response = await fetch(`${apiUrl}/blog/csrf-token/`);
         const data = await response.json();
         setCsrfToken(data.csrf_token);
       } catch (error) {
@@ -44,9 +47,11 @@ const RegisterForm = () => {
       alert("Passwords do not match!");
       return;
     }
-
+    const apiUrl = process.env.NODE_ENV === 'production'
+    ? process.env.REACT_APP_API_BASE_URL_PROD  // For production (Vercel)
+    : process.env.REACT_APP_API_BASE_URL_LOCAL;  // For local development
     // Send the registration POST request to the backend
-    const response = await fetch("http://127.0.0.1:8000/api/register/", {
+    const response = await fetch(`${apiUrl}/api/register/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

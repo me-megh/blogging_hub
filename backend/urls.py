@@ -41,8 +41,7 @@ urlpatterns = [
     path('', views.home, name='home'),  # Home route (if needed)
     path('admin/', admin.site.urls),  # Admin route
     path('blog/', include('blog.urls')),  # Include blog URLs (app-level routing)
-
-
+    path('', include('blog.urls')), 
     path('api/register/', views.RegisterAPIView.as_view(), name='register'),  # Registration API
     path('api/blog-posts/', views.BlogPostList.as_view(), name='blog-posts-list'),  # Blog posts list (API)
     path('api/blog-posts/<int:pk>/', views.BlogPostDetail.as_view(), name='blog-post-detail'),
@@ -52,4 +51,4 @@ urlpatterns = [
 ]
 
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  # Media URL handling for development
+   urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

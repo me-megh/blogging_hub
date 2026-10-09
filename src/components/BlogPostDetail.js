@@ -10,8 +10,11 @@ const BlogPostDetail = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const apiUrl = process.env.NODE_ENV === 'production'
+    ? process.env.REACT_APP_API_BASE_URL_PROD  // For production (Vercel)
+    : process.env.REACT_APP_API_BASE_URL_LOCAL;  // For local development
     const fetchPost = async () => {
-      const res = await fetch(`http://127.0.0.1:8000/api/blog-posts/${id}/`);
+      const res = await fetch(`${apiUrl}/api/blog-posts/${id}/`);
       const result = await res.json();
       setPost(result);
       setLoading(false);

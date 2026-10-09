@@ -20,10 +20,13 @@ const EditBlog = () => {
 
   // Fetch the blog post data when the component mounts
   useEffect(() => {
+    const apiUrl = process.env.NODE_ENV === 'production'
+    ? process.env.REACT_APP_API_BASE_URL_PROD  // For production (Vercel)
+    : process.env.REACT_APP_API_BASE_URL_LOCAL;  // For local development
     const fetchBlogPost = async () => {
       try {
         const response = await fetch(
-          `http://localhost:8000/api/blog-posts/${id}/`
+          `${apiUrl}/api/blog-posts/${id}/`
         );
         const data = await response.json();
         if (response.ok) {
@@ -54,8 +57,11 @@ const EditBlog = () => {
     if (image) formData.append("image", image);
 
     try {
+      const apiUrl = process.env.NODE_ENV === 'production'
+      ? process.env.REACT_APP_API_BASE_URL_PROD  // For production (Vercel)
+      : process.env.REACT_APP_API_BASE_URL_LOCAL;  // For local development
       const response = await fetch(
-        `http://localhost:8000/api/blog-posts/${id}/edit/`,
+        `${apiUrl}/api/blog-posts/${id}/edit/`,
         {
           method: "PATCH",
           headers: {

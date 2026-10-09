@@ -9,9 +9,13 @@ const BlogList = () => {
 
   // Fetch blogs from backend API
   useEffect(() => {
+    const apiUrl = process.env.NODE_ENV === 'production'
+      ? process.env.REACT_APP_API_BASE_URL_PROD  // For production (Vercel)
+      : process.env.REACT_APP_API_BASE_URL_LOCAL;  // For local development
+
     const fetchBlogs = async () => {
       try {
-        const response = await fetch('http://localhost:8000/api/blog-posts/');
+        const response = await fetch(`${apiUrl}/api/blog-posts/`);
         if (!response.ok) {
           throw new Error('Failed to fetch blogs');
         }
@@ -23,6 +27,7 @@ const BlogList = () => {
         setLoading(false); // Set loading to false after data is fetched
       }
     };
+
     fetchBlogs();
   }, []);
 
@@ -54,15 +59,20 @@ const BlogList = () => {
 
   // Function to handle blog deletion
   async function deleteBlog(blogId) {
-    const response = await fetch(`http://localhost:8000/api/blog-posts/${blogId}/`, {
+    const apiUrl = process.env.NODE_ENV === 'production'
+      ? process.env.REACT_APP_API_BASE_URL_PROD  // For production (Vercel)
+      : process.env.REACT_APP_API_BASE_URL_LOCAL;  // For local development
+
+    const response = await fetch(`${apiUrl}/api/blog-posts/${blogId}/`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
       },
     });
+
     if (response.ok) {
       // Refresh the blog list after deletion
-      setBlogs(blogs.filter((blog) => blog.id !== blogId));
+      setBlogs((prevBlogs) => prevBlogs.filter((blog) => blog.id !== blogId));
     } else {
       alert('Failed to delete blog');
     }
