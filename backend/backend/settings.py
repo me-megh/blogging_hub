@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # for production 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-DEBUG = False
+DEBUG = True
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -42,14 +42,13 @@ TEMPLATES = [
     },
 ]
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',  # Required for sessions
-    'django.contrib.auth.middleware.AuthenticationMiddleware',  # Required for auth
-    'django.contrib.messages.middleware.MessageMiddleware',  # Required for messages
+    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',  # Make sure this is included
-    'corsheaders.middleware.CorsMiddleware', 
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
 ]
 DATABASES = {
     'default': {
@@ -85,8 +84,8 @@ CSRF_COOKIE_SECURE = False  # यह False रखना चाहिए जब �
 CORS_ALLOW_CREDENTIALS = True
 SESSION_COOKIE_SAMESITE = 'Lax'
 CSRF_COOKIE_NAME = 'csrftoken' 
-SESSION_COOKIE_SECURE = False ,
-CSRF_COOKIE_SAMESITE = 'None',
+SESSION_COOKIE_SECURE = False 
+CSRF_COOKIE_SAMESITE = 'None'
 ALLOWED_HOSTS = [
     'blogging-hub-backend.onrender.com',  # Your backend URL on Render
     'blogging-hub-five.vercel.app',       # Your frontend URL on Vercel

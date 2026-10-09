@@ -38,11 +38,7 @@ const Home = () => {
             <div key={post.id} className="col-md-6 col-lg-4 mb-4">
               <div className="card h-100 shadow-sm">
                 <img
-                  src={`${
-                    process.env.NODE_ENV === "production"
-                      ? process.env.REACT_APP_API_BASE_URL_PROD
-                      : process.env.REACT_APP_API_BASE_URL_LOCAL
-                  }${post.image}`}
+                  src={post.image}
                   className="card-img-top"
                   alt={post.title}
                   style={{ width: "100%", height: "200px", objectFit: "cover" }}
