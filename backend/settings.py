@@ -79,7 +79,8 @@ CORS_ALLOWED_ORIGINS = [
 ]
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:3000',
-    'https://blogging-hub-five.vercel.app/'
+    'https://blogging-hub-five.vercel.app/',
+    'https://blogging-hub-git-main-me-meghs-projects.vercel.app',
 ]
 CSRF_COOKIE_HTTPONLY = False
 CSRF_COOKIE_SECURE = False  # यह False रखना चाहिए जब आप डेवलपमेंट पर काम कर रहे हों
