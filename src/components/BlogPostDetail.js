@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import Header from './header';
-import Footer from './footer';
-import backgroundImage from '../mona-eendra-vC8wj_Kphak-unsplash.jpg';
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import Header from "./header";
+import Footer from "./footer";
+import backgroundImage from "../mona-eendra-vC8wj_Kphak-unsplash.jpg";
 
 const BlogPostDetail = () => {
   const { id } = useParams(); // Getting the blog post ID from the URL
@@ -10,9 +10,10 @@ const BlogPostDetail = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const apiUrl = process.env.NODE_ENV === 'production'
-    ? process.env.REACT_APP_API_BASE_URL_PROD  // For production (Vercel)
-    : process.env.REACT_APP_API_BASE_URL_LOCAL;  // For local development
+    const apiUrl =
+      process.env.NODE_ENV === "production"
+        ? process.env.REACT_APP_API_BASE_URL_PROD // For production (Vercel)
+        : process.env.REACT_APP_API_BASE_URL_LOCAL; // For local development
     const fetchPost = async () => {
       const res = await fetch(`${apiUrl}/api/blog-posts/${id}/`);
       const result = await res.json();
@@ -45,11 +46,11 @@ const BlogPostDetail = () => {
         className="container my-5 blog-container"
         style={{
           backgroundImage: `url(${backgroundImage})`, // Apply your background image URL
-          backgroundSize: 'cover',
-          backgroundPosition: 'center center',
-          backgroundAttachment: 'fixed',
-          padding: '30px',
-          borderRadius: '8px',
+          backgroundSize: "cover",
+          backgroundPosition: "center center",
+          backgroundAttachment: "fixed",
+          padding: "30px",
+          borderRadius: "8px",
         }}
       >
         {/* Blog Post Section */}
@@ -59,10 +60,10 @@ const BlogPostDetail = () => {
             <div className="mb-4">
               {post.image && (
                 <img
-                  src={`http://127.0.0.1:8000${post.image}`}
+                  src={`${post.image}`}
                   alt={post.title}
                   className="img-fluid rounded shadow-sm"
-                  style={{ height: '400px', objectFit: 'cover', width: '100%' }}
+                  style={{ height: "400px", objectFit: "cover", width: "100%" }}
                 />
               )}
             </div>
@@ -76,7 +77,8 @@ const BlogPostDetail = () => {
             {/* Author and Date Section */}
             <div className="d-flex justify-content-between align-items-center mt-4">
               <small className="text-secondary">
-                By <strong>{post.author}</strong> on {new Date(post.created_at).toLocaleDateString()}
+                By <strong>{post.author}</strong> on{" "}
+                {new Date(post.created_at).toLocaleDateString()}
               </small>
             </div>
 
