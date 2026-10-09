@@ -43,14 +43,13 @@ TEMPLATES = [
     },
 ]
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',  # Required for sessions
-    'django.contrib.auth.middleware.AuthenticationMiddleware',  # Required for auth
-    'django.contrib.messages.middleware.MessageMiddleware',  # Required for messages
+    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',  # Make sure this is included
-    'corsheaders.middleware.CorsMiddleware', 
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
 ]
 DATABASES = {
     'default': {
@@ -75,7 +74,8 @@ LOGOUT_REDIRECT_URL = '/'
 SECRET_KEY =os.environ.get('DJANGO_SECRET_KEY', 'jeg0^ihr-8+78=5zl_&1!((c0%s#w@8am==ms#hf-y(sxl)1ez'),
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000', 
-    "https://blogging-hub-five.vercel.app" 
+    "https://blogging-hub-five.vercel.app" ,
+    "https://blogging-hub-git-main-me-meghs-projects.vercel.app",
 ]
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:3000',
