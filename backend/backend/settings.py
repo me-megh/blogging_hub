@@ -1,35 +1,67 @@
 import os
 from pathlib import Path
 
+import dj_database_url
+from dotenv import load_dotenv
+
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Load environment variables
+load_dotenv(BASE_DIR / ".env")
+
+
+# Security
+SECRET_KEY = os.environ.get(
+    "DJANGO_SECRET_KEY",
+    "django-insecure-local-development-only"
+)
+
+DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
+
+
+ALLOWED_HOSTS = [
+    'blogging-hub-backend.onrender.com',
+    'blogging-hub-five.vercel.app',
+    '127.0.0.1',
+    'localhost',
+    '0.0.0.0',
+]
+
+
+# Applications
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
-    'django.contrib.contenttypes',  # This must be included
+    'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
     'corsheaders',
-
 ]
-import os
-
-BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# for local 
-# MEDIA_URL = '/media/'
-# MEDIA_ROOT = BASE_DIR / 'media' 
-#DEBUG = True
+# Middleware
+MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+]
 
-# for production 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-DEBUG = True
+
+ROOT_URLCONF = 'backend.urls'
+
+
+# Templates
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],  # Optional: add a custom template directory
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -41,56 +73,113 @@ TEMPLATES = [
         },
     },
 ]
-MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-]
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',  # SQLite database engine
-        'NAME': BASE_DIR / 'db.sqlite3',  # Path to the SQLite database file
+
+
+# WSGI
+WSGI_APPLICATION = 'backend.wsgi.application'
+
+
+# DATABASE CONFIGURATION
+DATABASE_URL = os.environ.get('DATABASE_URL')
+
+if DATABASE_URL:
+    DATABASES = {
+        'default': dj_database_url.parse(
+            DATABASE_URL,
+            conn_max_age=600,
+            ssl_require=True
+        )
     }
-}
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.BasicAuthentication',  # Optional, if you need basic auth
-    ],
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+
+
+# Password validation
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
+]
+
+
+# Authentication
 AUTHENTICATION_BACKENDS = [
     'blog.backends.EmailBackend',
     'django.contrib.auth.backends.ModelBackend',
-    # Add any other authentication backends if needed
-]
-ROOT_URLCONF = 'backend.urls'
-STATIC_URL = '/static/'
-LOGOUT_REDIRECT_URL = '/' 
-SECRET_KEY =os.environ.get('DJANGO_SECRET_KEY', 'jeg0^ihr-8+78=5zl_&1!((c0%s#w@8am==ms#hf-y(sxl)1ez'),
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000', 
-    "https://blogging-hub-five.vercel.app" 
-]
-CSRF_TRUSTED_ORIGINS = [
-    'http://localhost:3000',
-    'https://blogging-hub-five.vercel.app/'
-]
-CSRF_COOKIE_HTTPONLY = False
-CSRF_COOKIE_SECURE = False  # यह False रखना चाहिए जब आप डेवलपमेंट पर काम कर रहे हों
-CORS_ALLOW_CREDENTIALS = True
-SESSION_COOKIE_SAMESITE = 'Lax'
-CSRF_COOKIE_NAME = 'csrftoken' 
-SESSION_COOKIE_SECURE = False 
-CSRF_COOKIE_SAMESITE = 'None'
-ALLOWED_HOSTS = [
-    'blogging-hub-backend.onrender.com',  # Your backend URL on Render
-    'blogging-hub-five.vercel.app',       # Your frontend URL on Vercel
-    '127.0.0.1',                         # Local development
-    'localhost',                         
-    '0.0.0.0',                           # Local development
 ]
 
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ],
+}
+
+
+# Internationalization
+LANGUAGE_CODE = 'en-us'
+
+TIME_ZONE = 'Asia/Kolkata'
+
+USE_I18N = True
+
+USE_TZ = True
+
+
+# Static files
+STATIC_URL = '/static/'
+
+
+# Media files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+# Logout
+LOGOUT_REDIRECT_URL = '/'
+
+
+# CORS Configuration
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+    'https://blogging-hub-five.vercel.app',
+    'https://blogging-hub-git-main-me-meghs-projects.vercel.app',
+]
+
+CORS_ALLOW_CREDENTIALS = True
+
+
+# CSRF Configuration
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:3000',
+    'https://blogging-hub-five.vercel.app',
+    'https://blogging-hub-git-main-me-meghs-projects.vercel.app',
+]
+
+CSRF_COOKIE_HTTPONLY = False
+CSRF_COOKIE_NAME = 'csrftoken'
+
+CSRF_COOKIE_SAMESITE = 'None'
+SESSION_COOKIE_SAMESITE = 'None'
+
+CSRF_COOKIE_SECURE = not DEBUG
+SESSION_COOKIE_SECURE = not DEBUG
+
+
+# Default primary key
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
