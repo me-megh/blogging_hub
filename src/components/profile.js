@@ -30,14 +30,12 @@ const Profile = () => {
 
     const fetchProfileData = async () => {
       try {
-        console.log("Profile API URL:", apiUrl);
+        const csrfToken = getCsrfTokenFromCookie();
 
         const response = await fetch(`${apiUrl}/api/profile/`, {
           method: "GET",
+          headers: csrfToken ? { "X-CSRFToken": csrfToken } : {},
           credentials: "include",
-          headers: {
-            "Content-Type": "application/json",
-          },
         });
 
         console.log("Profile API Status:", response.status);
@@ -46,19 +44,18 @@ const Profile = () => {
           const data = await response.json();
           setProfileData(data);
         } else {
-          const errorData = await response.text();
-          console.error("Profile API Error:", errorData);
           setError(`Failed to fetch profile data. Status: ${response.status}`);
         }
       } catch (error) {
-        console.error("Profile fetch error:", error);
+        console.error("Profile API Error:", error);
         setError("Error fetching profile data.");
       } finally {
         setLoading(false);
       }
     };
-  });
 
+    fetchProfileData();
+  }, []);
   const handleDelete = async (id) => {
     const csrfTokenFromCookie = getCsrfTokenFromCookie();
     const authToken = localStorage.getItem("authToken");
