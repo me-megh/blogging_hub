@@ -25,39 +25,39 @@ const Profile = () => {
   useEffect(() => {
     const apiUrl =
       process.env.NODE_ENV === "production"
-        ? process.env.REACT_APP_API_BASE_URL_PROD // For production (Vercel)
-        : process.env.REACT_APP_API_BASE_URL_LOCAL; // For local development
-    const csrfTokenFromCookie = getCsrfTokenFromCookie();
-    console.log('CSRF Token from cookie:', csrfTokenFromCookie);
-    if (csrfTokenFromCookie) {
-      const fetchProfileData = async () => {
-        try {
-          const response = await fetch(`${apiUrl}/api/profile/`, {
-            method: "GET",
-            headers: {
-              "X-CSRFToken": csrfTokenFromCookie,
-            },
-            credentials: "include",
-          });
-          console.log('Response Status:', response.status);
-          console.log('Response Headers:', response.headers);
-          if (response.ok) {
-            const data = await response.json();
-            setProfileData(data);
-          } else {
-            setError(
-              `Failed to fetch profile data. Status: ${response.status}`
-            );
-          }
-        } catch (error) {
-          setError("Error fetching profile data.");
-        } finally {
-          setLoading(false);
+        ? process.env.REACT_APP_API_BASE_URL_PROD
+        : process.env.REACT_APP_API_BASE_URL_LOCAL;
+
+    const fetchProfileData = async () => {
+      try {
+        console.log("Profile API URL:", apiUrl);
+
+        const response = await fetch(`${apiUrl}/api/profile/`, {
+          method: "GET",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        console.log("Profile API Status:", response.status);
+
+        if (response.ok) {
+          const data = await response.json();
+          setProfileData(data);
+        } else {
+          const errorData = await response.text();
+          console.error("Profile API Error:", errorData);
+          setError(`Failed to fetch profile data. Status: ${response.status}`);
         }
-      };
-      fetchProfileData();
-    }
-  }, []);
+      } catch (error) {
+        console.error("Profile fetch error:", error);
+        setError("Error fetching profile data.");
+      } finally {
+        setLoading(false);
+      }
+    };
+  });
 
   const handleDelete = async (id) => {
     const csrfTokenFromCookie = getCsrfTokenFromCookie();

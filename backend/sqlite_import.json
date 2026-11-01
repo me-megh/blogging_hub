@@ -1,0 +1,302 @@
+[
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$9jdcHFqVHFY0CpEVM1cj5U$JJdgc9Sj87qYEHMWFUmcKbZ5uSMmFmEesE4z1EzT2Ag=",
+      "last_login": "2026-04-09T21:59:57.606Z",
+      "is_superuser": true,
+      "username": "megha",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2026-03-29T13:43:01.549Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$aqsIQNXnuJd8hgfopCJv22$UDkBxEfOX7ffkyzSXSnNFKMa/wBtn7a86mjqNUt/DRo=",
+      "last_login": "2026-04-09T21:57:20.841Z",
+      "is_superuser": false,
+      "username": "megha01",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-03-29T17:58:10.423Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$SP4GpL1113jSa80eHV7McF$Mw+2QjuGvavwY/PEq9f105zDcPY7VSRHN/vCxKQXx9U=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "test",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-03-30T08:09:21.791Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 4,
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$pD1o9DBW71C4VdQqgxya64$0NI3p/ERgtBxPtJdVfJ+bD4eW/Dre8GSgl+p7rLUvqw=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "test4",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-03-30T10:15:48.952Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 5,
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$DpUL7pinOxDFHvUokKQPgL$0WhAzO89u7Ck/dUNyPp8UQZwoi5dbgBr5bJgtGhhMzg=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "test67",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-03-30T11:43:25.192Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 6,
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$NEqiUfxrG2cLrSItD3zogs$X4H6zWcakC/Wf6mVp64HPCH9MSOr9xr+iGonxqHJz54=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "testUser",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-03-30T15:08:44.112Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 7,
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$hUiPb6nzcxGTi0nhVhOf5S$V84tG5xoyO1DcdWzdOPaX6yLYXmDGK6GOaiDYp0/xL4=",
+      "last_login": "2026-04-09T21:54:53.357Z",
+      "is_superuser": false,
+      "username": "neha",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-03-30T15:09:01.123Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 8,
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$C5Uuedv6M7Cj3vaRTZkRGW$8gFS4gDTXK+/T8ABi12mRwxus4oeye6i/gx5bm+V8tY=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "tesrt",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-03-30T17:35:33.832Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 9,
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$vwS1EF54xgffQN5tmHhFDY$22078VPAsFx2quoCiZp2ChCPyC0ENxCaH832zKBKQRs=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "newuser123",
+      "first_name": "",
+      "last_name": "",
+      "email": "newuser123@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-04-09T01:27:21.048Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 10,
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$Ppi5vj7LiKs7KxGwYEo6qc$OoJBRVrJHYY733/gSskHApXcEIOhndj7MLDm4w5IrnM=",
+      "last_login": "2026-04-09T02:57:47.651Z",
+      "is_superuser": false,
+      "username": "testuser5",
+      "first_name": "",
+      "last_name": "",
+      "email": "test5@gmail.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-04-09T01:28:59.865Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 11,
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$u7MVzb21vS7tIwp6hPgomP$DSNCf6GrENaDashzy6zhCYT7aadJdWKgFzlWcvkVbUA=",
+      "last_login": "2026-10-31T15:19:49.885Z",
+      "is_superuser": false,
+      "username": "demo",
+      "first_name": "",
+      "last_name": "",
+      "email": "demo@gmail.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-04-09T02:37:51.669Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 12,
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$tddvOtxFj8NRIQacEryjoE$l5cHg96kwAcA2mei4U4uvCLw2s/mrt/E4d02pwJVmbc=",
+      "last_login": "2026-04-09T03:55:15.128Z",
+      "is_superuser": false,
+      "username": "demo123",
+      "first_name": "",
+      "last_name": "",
+      "email": "demo123@gmail.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-04-09T03:55:07.478Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "blog.blogpost",
+    "pk": 1,
+    "fields": {
+      "title": "The Power of Time Management in Academic Success",
+      "description": "Time management is one of the most important skills a student can have. By breaking down tasks into manageable chunks and using tools like planners and digital apps, students can stay organized and meet deadlines with ease. In this blog, we\u2019ll discuss various strategies for improving time management and boosting academic performance.",
+      "image": "blog_images/wooden-blocks-with-words-time-to-study-photo.jpg",
+      "created_at": "2026-03-29T14:25:54.330Z",
+      "updated_at": "2026-04-09T22:04:09.330Z",
+      "author": 1
+    }
+  },
+  {
+    "model": "blog.blogpost",
+    "pk": 2,
+    "fields": {
+      "title": "How to Stay Focused During Long Study Sessions",
+      "description": "Long study sessions can be exhausting, and staying focused for an extended period of time is often a struggle. This blog provides tips and strategies for maintaining focus during long hours of studying, including the use of breaks, avoiding distractions, and maintaining a positive study environment.",
+      "image": "blog_images/education-9629691_640.webp",
+      "created_at": "2026-03-29T14:25:54.331Z",
+      "updated_at": "2026-04-09T22:02:19.356Z",
+      "author": 1
+    }
+  },
+  {
+    "model": "blog.blogpost",
+    "pk": 5,
+    "fields": {
+      "title": "Effective Study Techniques for Better Retention",
+      "description": "Retaining information during study sessions can be challenging. However, using effective techniques like spaced repetition, active recall, and the Pomodoro technique can significantly improve memory retention. This blog explores how these methods can be applied to your study routine to maximize learning and minimize burnout.",
+      "image": "blog_images/study-hacks.jpg",
+      "created_at": "2026-03-29T18:53:58.633Z",
+      "updated_at": "2026-04-09T21:59:24.383Z",
+      "author": 2
+    }
+  },
+  {
+    "model": "blog.blogpost",
+    "pk": 6,
+    "fields": {
+      "title": "The Power of Persistence: Never Give Up on Your Dreams",
+      "description": "Success isn't just about talent or intelligence; it's about persistence. This blog post highlights the importance of resilience in the face of failure and adversity. Whether you're chasing academic goals, personal growth, or career milestones, persistence can be the key to overcoming challenges and achieving greatness. Learn how staying consistent and pushing through difficult times can eventually lead to success.",
+      "image": "blog_images/dr-1024x576.jpg",
+      "created_at": "2026-04-09T04:48:49.519Z",
+      "updated_at": "2026-04-09T22:03:50.712Z",
+      "author": 1
+    }
+  },
+  {
+    "model": "blog.blogpost",
+    "pk": 8,
+    "fields": {
+      "title": "Exploring the Streets of Tokyo",
+      "description": "Tokyo is a vibrant and bustling metropolis, blending ancient traditions with modern advancements. Explore the neon-lit streets of Shibuya, the temples of Asakusa, and the fashionable neighborhoods of Harajuku. Tokyo is a city of contrasts that promises something for every kind of traveler.",
+      "image": "blog_images/blogging-blog-concepts-ideas-worktable-blogging-blog-concepts-ideas-white-w_yAj2zF5.webp",
+      "created_at": "2026-04-09T05:05:35.330Z",
+      "updated_at": "2026-04-09T21:55:22.717Z",
+      "author": 7
+    }
+  },
+  {
+    "model": "blog.blogpost",
+    "pk": 10,
+    "fields": {
+      "title": "A Journey Through the Swiss Alps",
+      "description": "The Swiss Alps are known for their majestic views and breathtaking landscapes. This journey takes you through picturesque villages, snowy peaks, and serene lakes. Whether you're hiking, skiing, or simply enjoying the view, the Swiss Alps are an experience that everyone should have at least once in their lifetime.",
+      "image": "blog_images/download.png",
+      "created_at": "2026-04-09T05:10:59.616Z",
+      "updated_at": "2026-04-09T21:54:39.591Z",
+      "author": 11
+    }
+  },
+  {
+    "model": "blog.blogpost",
+    "pk": 12,
+    "fields": {
+      "title": "The Wonders of Bali",
+      "description": "Bali is known for its beautiful beaches, vibrant culture, and incredible natural beauty. From the terraced rice fields of Ubud to the peaceful beaches of Seminyak, Bali offers a unique mix of relaxation, adventure, and cultural experiences. It\u2019s a perfect destination for both families and solo travelers.",
+      "image": "blog_images/6c0bef7735422bea09ac5b1282d6be7d6a750a4f-1420x933.webp",
+      "created_at": "2026-04-09T21:04:56.610Z",
+      "updated_at": "2026-04-09T21:56:34.440Z",
+      "author": 7
+    }
+  }
+]
